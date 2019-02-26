@@ -6,10 +6,13 @@ default-init-method="turnOnLights" default-destroy-method="turnOffLights">
 
     <bean id="duke" class="com.springinaction.springidol.Juggler">
         <constructor-arg value="15"/>
+
     </bean>
     <bean id="poeticDuke" class="com.springinaction.springidol.PoeticJuggler">
         <constructor-arg value="15"/>
-        <constructor-arg ref="sonnet29"/>
+        <constructor-arg>
+            <bean class="com.springinaction.springidol.Sonnet29"/>
+        </constructor-arg>
     </bean>
 
     <bean id="sonnet29" class="com.springinaction.springidol.Sonnet29"></bean>
@@ -20,4 +23,31 @@ default-init-method="turnOnLights" default-destroy-method="turnOffLights">
 
     <bean id="auditorium" class="com.springinaction.springidol.Auditorium"
     init-method="turnOnLights" destroy-method="turnOffLights"/>
+
+    <!--<bean id="kenny" class="com.springinaction.springidol.Instrumentalist"/>-->
+
+    <bean id="kenny" class="com.springinaction.springidol.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+    </bean>
+
+    <bean id="saxophone" class="com.springinaction.springidol.Saxophone"/>
+
+    <bean id="kenny2" class="com.springinaction.springidol.Instrumentalist">
+        <property name="song" value="Jinqle Bells"/>
+        <property name="instrument" >
+            <bean class="com.springinaction.springidol.Saxophone"/>
+        </property>
+    </bean>
+
+    <bean id="piano" class="com.springinaction.springidol.Piano"/>
+
+    <!--<bean id="hank" class="com.springinaction.springidol.OneManBand">
+        <property name="instruments">
+            <list>
+                <ref bean="guitar"/>
+                <ref bean="cymbal"/>
+                <ref bean="harmonica"/>
+            </list>
+        </property>
+    </bean>-->
 </beans>
